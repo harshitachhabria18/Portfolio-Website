@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Portfolio Website
+        </title>
+    </head>
+    <body>
+        <h1>Harshita Chhabria</h1>
+        <form method="POST" action="/home">
+            <input type="text" name="section">
+            <input type="submit" value="Search">
+        </form>
+        <h3>CSE Student</h3>
+        <img src="static/images/Photo.jpeg" height="100px" width="100px" alt="profilephoto">
+
+        <!-- About section -->
+         <div id="About" style="background-color: {{ 'yellow' if section_id == 'About' else 'transparent' }};">
+            <h4>About Me</h4>
+            <p>
+                Computer Science Engineering student passionate about bringing
+                <br>
+                ideas to life through tech. Built a school management app during
+                <br>
+                school, that helped teachers manage student data and let parents
+                <br>
+                and students track performance. Always exploring new skills — from
+                <br>
+                Python and web development to databases. Seeking internship
+                <br>
+                opportunities to grow as a full-stack developer and contribute
+                <br>
+                meaningfully to real-world application
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="Skills" style="background-color: {{ 'yellow' if section_id == 'Skills' else 'transparent' }};">
+            <h4>Skills</h4>
+            <p><b><small><u>Professional</u></small></b></p>
+            <ul>
+                <li>Python</li>
+                <li>Tkinter</li>
+                <li>C++</li>
+                <li>C</li>
+                <li>Flask</li>
+                <li>MySQL</li>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+            <p><b><small><u>Personal</u></small></b></p>
+            <ul>
+                <li>Communication</li>
+                <li>Teamwork</li>
+            </ul>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="Projects" style="background-color: {{ 'yellow' if section_id == 'Projects' else 'transparent' }};">
+            <h4>Projects</h4>
+            <p><i>School Management App</i></p>
+            <p>
+                Developed MyAIR, a Python-based school management
+                <br>
+                system with Tkinter GUI and MySQL backend, enabling
+                <br>
+                teachers to manage academics and attendance, and
+                <br>
+                allowing students/parents to view results and updates
+                <br>
+                with data visualizations.
+            </p>
+            <p><i>Swiggy Clone</i></p>
+            <p> Created a Swiggy-inspired frontend clone using HTML, CSS,
+                <br>
+                Bootstrap, and multimedia elements, showcasing
+                <br>
+                responsive layouts and UI design across pages like Home,
+                <br>
+                Services, and About.</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="Contact" style="background-color: {{'yellow' if section_id == 'Contact' else 'transparent' }};">
+            <h4>Contact Section</h4>
+            <p><b>Email</b> : harshitachhabria18@gmail.com</p>
+            <hr>
+            <a href="https://www.linkedin.com/in/harshita-chhabria-6b5059215/">LinkedIn</a>
+            <hr>
+            <a href="https://github.com/harshitachhabria18/">GitHub</a>
+        </div>
+    </body>
+</html>
