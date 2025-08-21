@@ -1,38 +1,62 @@
+/* ---------- Import Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+
 /* ---------- Base Styles ---------- */
 body {
-  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
-  background-color: #f4f7fb;
-  color: #2c3e50;
+  background: url("images/background_image.jpeg") no-repeat center center fixed;
+  background-size: 100% auto;   /* show full background */
+  background-color: #f0f0f0;  /* fill empty space */
+  color: #000; /* default text black */
+  animation: fadeInBody 1s ease-in;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ---------- Flash Messages ---------- */
-div[style*="color: red;"],
-.flash-msg {
-  background-color: #fdecea;
-  color: #c0392b !important;
+.flash-msg,
+div[style*="color: red;"] {
+  background-color: rgba(231, 76, 60, 0.9);
+  color: #fff !important;
   padding: 0.75rem 1rem;
   margin: 1rem auto;
   max-width: 400px;
-  border-left: 4px solid #e74c3c;
+  border-left: 4px solid #ff6b6b;
   border-radius: 6px;
   text-align: center;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 /* ---------- Form & Login Page Styling ---------- */
 form {
-  max-width: 400px;
+  max-width: 420px;
   margin: 3rem auto;
-  background: #fff;
-  padding: 2.5rem;   /* more breathing space */
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.92);  /* Lighter background */
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 form label {
   display: block;
   margin: 0.8rem 0 0.4rem;
   font-weight: 600;
+  color: #111; /* black text */
 }
 
 /* Inputs */
@@ -40,51 +64,68 @@ form input[type="text"],
 form input[type="password"],
 form input[name="section"] {
   width: 100%;
-  padding: 1rem;   /* increased padding */
+  padding: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #aaa;
   border-radius: 6px;
   font-size: 1rem;
   box-sizing: border-box;
+  background: #fff;
+  color: #000; /* black input text */
+  transition: all 0.3s ease;
+}
+
+form input:focus {
+  background: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0,198,255,0.6);
+  outline: none;
 }
 
 /* Buttons */
 form input[type="submit"],
 form input[value="Search"] {
   width: 100%;
-  background-color: #3498db;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
   color: #fff;
-  padding: 1rem;  /* increased padding */
+  padding: 1rem;
   border: none;
   border-radius: 8px;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 form input[type="submit"]:hover,
 form input[value="Search"]:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,198,255,0.5);
 }
 
 /* ---------- Hero Section Enhancements ---------- */
 h1 {
   text-align: center;
   margin-top: 2rem;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2c3e50;
+  font-size: 2.8rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #00c6ff; /* highlight kept */
   position: relative;
+  animation: fadeDown 1.2s ease;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1::after {
   content: "";
   display: block;
-  width: 80px;
+  width: 100px;
   height: 4px;
-  background-color: #3498db;
-  margin: 0.5rem auto;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  margin: 0.6rem auto;
   border-radius: 2px;
 }
 
@@ -92,7 +133,12 @@ h1::after {
 h3 {
   text-align: center;
   margin-top: 0.5rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: #111; /* black */
+  opacity: 0;
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 0.3s;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Profile Image */
@@ -100,10 +146,16 @@ img {
   display: block;
   margin: 1rem auto;
   border-radius: 50%;
-  border: 3px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border: 4px solid #00c6ff;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 8px 25px rgba(0,198,255,0.6);
 }
 
 /* ---------- Section Cards ---------- */
@@ -111,33 +163,39 @@ div[id^="About"],
 div[id^="Skills"],
 div[id^="Projects"],
 div[id^="Contact"] {
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.9); /* white cards */
   max-width: 900px;
   margin: 2rem auto;
-  padding: 2.5rem;   /* consistent padding */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 2.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: transform 0.4s, box-shadow 0.4s, border 0.3s;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+  color: #000; /* black text inside cards */
 }
+
+div[id^="About"] { animation-delay: 0.2s; }
+div[id^="Skills"] { animation-delay: 0.4s; }
+div[id^="Projects"] { animation-delay: 0.6s; }
+div[id^="Contact"] { animation-delay: 0.8s; }
 
 div[id^="About"]:hover,
 div[id^="Skills"]:hover,
 div[id^="Projects"]:hover,
 div[id^="Contact"]:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Active section highlight */
-div[style*="background-color: yellow"] {
-  background-color: #fcf8e8 !important;
-  border-left: 5px solid #f1c40f;
+  transform: translateY(-5px) scale(1.03);
+  border: 1px solid #00c6ff;
+  box-shadow: 0 10px 30px rgba(0,198,255,0.4);
 }
 
 /* ---------- Typography & Lists ---------- */
 p {
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 1rem;
+  color: #111; /* black */
 }
 
 ul {
@@ -146,18 +204,28 @@ ul {
 }
 
 ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #000; /* black */
+}
+
+ul li:hover {
+  transform: translateX(8px);
+  color: #00c6ff; /* highlight */
 }
 
 /* ---------- Links ---------- */
 a {
-  color: #3498db;
+  color: #00c6ff;
   text-decoration: none;
   font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #0072ff;
+  transform: scale(1.08);
 }
 
 /* ---------- Responsive Support ---------- */
@@ -175,3 +243,4 @@ a:hover {
     margin: 1.5rem auto;
   }
 }
+
